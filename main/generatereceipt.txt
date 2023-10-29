@@ -1,0 +1,177 @@
+<?php
+// Include the database connection script
+include('../connect.php');
+
+// Check if the receipt content is received
+if (isset($_POST['receipt-content'])) {
+    // Get the receipt content from the POST request
+    $receiptContent = $_POST['receipt-content'];
+
+    // Parse the receipt content into an array (assuming it's in a structured format)
+    $receiptData = json_decode($receiptContent, true);
+
+    if ($receiptData) {
+        // Extract receipt information and receipt items
+        $customerName = $receiptData['customerName'];
+        $totalAmount = $receiptData['totalAmount'];
+        $receiptItems = $receiptData['items'];
+
+        // Insert receipt information into the database
+        $insertReceiptQuery = "INSERT INTO receipts (customer_name, total_amount) VALUES (?, ?)";
+        $stmt = $conn->prepare($insertReceiptQuery);
+
+        if ($stmt === false) {
+            die("Error: Failed to prepare the receipt insertion query: " . $conn->error);
+        }
+
+        if ($stmt->bind_param("sd", $customerName, $totalAmount) === false) {
+            die("Error: Failed to bind parameters: " . $stmt->error);
+        }
+
+        if ($stmt->execute()) {
+            $receiptId = $stmt->insert_id;
+
+            // Insert receipt items into the database
+            foreach ($receiptItems as $item) {
+                $productId = $item['productId'];
+                $quantity = $item['quantity'];
+                $price = $item['price'];
+                $total = $item['total'];
+                
+                // Check if "productName" exists in the item, if not, provide a default value or skip insertion
+                if (isset($item['productName'])) {
+                    $productName = $item['productName'];
+                } else {
+                    // Handle the case where "productName" is missing
+                    continue; // Skip this item
+                }
+
+                $insertReceiptItemQuery = "INSERT INTO receipt_items (receipt_id, product_id, quantity, price, total, product_name) VALUES (?, ?, ?, ?, ?, ?)";
+                
+                // Use a different variable for the second prepared statement
+                $stmtItems = $conn->prepare($insertReceiptItemQuery);
+                $stmtItems->bind_param("iiddss", $receiptId, $productId, $quantity, $price, $total, $productName);
+
+                if ($stmtItems === false) {
+                    die("Error: Failed to prepare the receipt item insertion query: " . $conn->error);
+                }
+
+                if ($stmtItems->execute() === false) {
+                    die("Error: Failed to execute the receipt item insertion query: " . $stmtItems->error);
+                }
+            }
+
+            // Generate HTML receipt
+$htmlReceipt = "
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt</title>
+    <style type=\"text/css\">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .receipt-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .customer-info {
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class=\"receipt-container\">
+        <h1>Receipt</h1>
+        <p><strong>Customer Name:</strong> $customerName</p>
+        <h2>Items</h2>
+        <ul>";
+
+foreach ($receiptItems as $item) {
+    if (isset($item['productName'])) {
+        $productName = $item['productName']; // Extract productName
+        $quantity = $item['quantity'];
+        $price = $item['price'];
+        $total = $item['total'];
+        $htmlReceipt .= "<li>$productName - Quantity: $quantity, Price: $price, Total: $total</li>";
+    }
+}
+
+$htmlReceipt .= "
+        </ul>
+        <p><strong>Total Amount:</strong> $totalAmount</p>
+    </div>
+</body>
+</html>";
+
+
+            // Output a link to print the receipt
+            echo "<a href=\"javascript:window.print()\">Print Receipt</a>";
+
+            // Output the HTML receipt for preview
+            echo $htmlReceipt;
+
+        } else {
+            // Handle database insertion error
+            echo "Error: Failed to store receipt information in the database.";
+        }
+    } else {
+        // Handle invalid receipt content
+        echo "Error: Invalid receipt content.";
+    }
+} else {
+    // Handle the case where no receipt content is received
+    echo "Error: Receipt content not received.";
+}
+
+// Close the database connection
+$conn->close();
+?>

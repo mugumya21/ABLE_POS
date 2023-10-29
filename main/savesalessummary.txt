@@ -1,0 +1,55 @@
+<?php
+session_start();
+include('../connect.php');
+
+$sales_type = $_POST['sales_type']; // Assuming you have a form field for selecting sales type
+$date = $_POST['date'];
+$amount = $_POST['amount'];
+$comment = $_POST['comment'];
+
+// Verify that the sales type, date, amount, and comment are not empty
+if (empty($sales_type) || empty($date) || empty($amount)) {
+    $_SESSION['error_message'] = "Sales type, date, amount are required fields.";
+    header("location: salessummary.php"); // Replace with the appropriate page URL
+    exit();
+}
+
+// Begin a transaction
+$conn->begin_transaction();
+
+try {
+    // Insert the sales record into the salessummary table
+    $insertSalesQuery = "INSERT INTO salessummary (sales_type, date, amount, comment) VALUES (?, ?, ?, ?)";
+    $insertSalesStmt = $conn->prepare($insertSalesQuery);
+    $insertSalesStmt->bind_param("ssds", $sales_type, $date, $amount, $comment);
+    
+    if (!$insertSalesStmt->execute()) {
+        throw new Exception("Failed to insert sales record.");
+    }
+
+    // Update the amount in cashathand table
+    $updateCashAtHandQuery = "UPDATE cashathand SET amount = amount + ?";
+    $updateCashAtHandStmt = $conn->prepare($updateCashAtHandQuery);
+    $updateCashAtHandStmt->bind_param("d", $amount);
+
+    if (!$updateCashAtHandStmt->execute()) {
+        throw new Exception("Failed to update cashathand table.");
+    }
+
+    // Commit the transaction
+    $conn->commit();
+
+    header("location: salessummary.php"); // Replace with the appropriate success page URL
+} catch (Exception $e) {
+    // Rollback the transaction on error
+    $conn->rollback();
+    $_SESSION['error_message'] = "Error: " . $e->getMessage();
+    header("location: salessummary.php"); // Replace with the appropriate error page URL
+    exit();
+} finally {
+    // Close prepared statements
+    $insertSalesStmt->close();
+    $updateCashAtHandStmt->close();
+    $conn->close();
+}
+?>

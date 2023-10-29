@@ -1,0 +1,55 @@
+#################################################### TASKS TO ACHIEVE ############################################################
+
+1. Cashier should enter products, purchases, sales and expenses into the database and editable.
+
+        a) make products shown in the table --- fininished and editable(edit done.. & delete ..not done)
+        b) make purchases shown in the table  ..edit them
+        c) make sales shown in the table     ..............................
+        d) make expenses shown in the table     --- fininished 
+
+    
+        Done too ....       NB:Records should appear to the SuperAdmin ie, sales( cash, credit, clearance), purchases(cash, credit) and expenses(transport, meals, airtime, data, directors allowance, salaries,
+        rent, water, electricity, stationary, renovation $ repairs, packaging, loading and offloading, IT solutions, fuel, office expenses, commission, ura taxes, local gov't taxes, donation, assets, others )
+
+2. Cashier should enter customers and suppliers into the database.
+
+        a) make customers shown in the table   ..edit them not yet
+        b) make supliers shown in the table    ..edit them not yet
+        
+
+
+3.Sales
+
+
+4.Transactions
+
+
+In this code, add in dynamic  graph and pie chart showing the following, 
+sales report, expenses report, purchases report, suppliers report, profits report, loss report, products sold and bought, customer ledger report , supplier ledger report against weeks in a current year. 
+
+
+
+
+
+########################
+edit button to function 
+then delete button to be copied from the purchaseslist.php to function in other pages where it is required. 
+
+
+
+####################### some guys work ###################
+was trying to push all the data from the raffles.php files to a database but it only submits the first fields to the stripe checkout form but doesn't submit data to the databse
+
+
+
+This code will display the remaining records, the total debit and credit amounts, and the total balance on each page of the Customers Ledger Report.
+in the ############# customersledgerreport ###############33
+
+
+Add purchase item, and it updates the products table , and delete purchase item
+
+
+############ WORK ON THE DATE ISSUE:
+
+
+###################### purchase edit summary doesnt work...

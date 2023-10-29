@@ -1,0 +1,57 @@
+mugumya21
+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 == for pulling from git to hosting space
+
+
+###### for Filezilla Quick connect to send files from local to hosting space. #######
+host: 107.189.1.208
+username: paradiseagents
+password: Out77Side33F
+port: 21 default for htp
+
+#### webstar dashboard login ###########
+https://www.paradiseagents.com:2222/
+username: paradiseagents
+password: Out77Side33F
+
+##### IN VS code ###
+always use git bash
+ie VICY TECH SOLUTIONS@DESKTOP-O51MF4U MINGW64 /c/xampp/htdocs/public_html (main)
+
+
+
+…or create a new repository on the command line
+echo "# paradiseagentsSystem" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mugumya21/paradiseagentsSystem.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/mugumya21/paradiseagentsSystem.git
+git branch -M main
+git push -u origin main
+
+
+
+
+
+
+
+
+the above code is for cart.php 
+help me and create for me other pages and features that will link up with cart page so as i make sales both cash and on credit and and generate a receipt and invoice respectively. 
+
+
+##### how to keep the php appliaction running on xampp server active, so as the bsuness owner doesnt keep opening the xampp sever ####
+Run as an Admin
+
+cd C:\xampp\apache\bin
+httpd.exe -k install -n "MyApacheService"
+sc start "MyApacheService"
+
+Open the Windows Services Manager by pressing Win + R, typing services.msc, and pressing Enter.
+Locate the "MyApacheService" (or the name you chose) service in the list.
+Right-click on it, select "Properties," and set the "Startup type" to "Automatic" if you want it to start automatically with Windows.
+
+
