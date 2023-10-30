@@ -48,8 +48,7 @@
                         <li class="active"><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a></li>  
                         <li><a href="salessummary.php"><i class="icon-shopping-cart icon-2x"></i> Sales Summary</a></li>                        
                         <li><a href="receiptslist.php"><i class="icon-list-alt icon-2x"></i> Receipts</a>                                     </li>
-                        <li><a href="invoiceslist.php"><i class="icon-list-alt icon-2x"></i> Invoices</a>  </li>
-                        <li>	<a href="#"><i class="icon-list-alt icon-2x"></i>Orders</a> </li> 
+                        <li><a href="#"><i class="icon-list-alt icon-2x"></i> Invoices</a>  </li>
                         <li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>                              
                         
                         <br>	
