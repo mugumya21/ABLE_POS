@@ -189,14 +189,11 @@ CREATE TABLE  IF NOT EXISTS purchasescategory (
 
 
 
-
--- Create the 'receipts' table
-CREATE TABLE  IF NOT EXISTS receipts (
+CREATE TABLE IF NOT EXISTS receipts (
     receipt_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
-    receipt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
+    receipt_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 
@@ -208,7 +205,7 @@ CREATE TABLE   IF NOT EXISTS orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
-    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    order_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 
@@ -221,8 +218,7 @@ CREATE TABLE  IF NOT EXISTS  invoices (
     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
-    invoice_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+ invoice_date DATE NOT NULL DEFAULT CURRENT_DATE);
 
 
 CREATE TABLE IF NOT EXISTS cashpayouts (
@@ -329,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 
 
--- add them manually
+-- add these below... manually
 -- Create the 'receipt_items' table
 CREATE TABLE   IF NOT EXISTS receipt_items (
     receipt_item_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -342,3 +338,4 @@ CREATE TABLE   IF NOT EXISTS receipt_items (
     FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+

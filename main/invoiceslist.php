@@ -97,6 +97,16 @@
                     ?>
                     <div style="text-align:center;">
                         Total Number of Invoice:  <font color="green" style="font:bold 22px 'Aleo';">[<?php echo $rowcount;?>]</font>
+                        <?php
+// Calculate total amount from all receipts
+$sqlTotalAmount = "SELECT SUM(total_amount) AS totalAmount FROM invoices";
+$resultTotalAmount = $conn->query($sqlTotalAmount);
+$rowTotalAmount = $resultTotalAmount->fetch_assoc();
+$totalAmount = $rowTotalAmount['totalAmount'];
+?>
+<br><br>
+<p>Total amount Ugx <strong><?php echo number_format($totalAmount, 2); ?></strong></p>
+         
                     </div>
                     <div style="text-align:center;">
                     </div>

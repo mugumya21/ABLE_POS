@@ -197,7 +197,8 @@ if ($position == 'Admin' || $position == 'SuperAdmin') {
  
     <a href="salessummaryreport.php" style="background-color: #16a085;">
         <span style="color: white;"><i class="icon-shopping-cart icon-2x"></i><br> Sales Summary Report</span>
-    </a>               
+    </a>              
+	     
     <a href="purchasesreport.php" style="background-color: #2ecc71;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Purchases Summary Report</span>
     </a>  
@@ -212,8 +213,11 @@ if ($position == 'Admin' || $position == 'SuperAdmin') {
     <a href="graphicalreport.php" style="background-color: #15a485;">
         <span style="color: white;"><i class="icon-bar-chart icon-2x"></i><br> Graphical Analysis Report</span>
     </a>   
+	<a href="receiptssummaryreport.php" style="background-color: #168085;">
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Receipts Summary Report</span>
+    </a>      
     <a href="cashaccounts.php" style="background-color:  #8e44ad;">
-        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Cash Records</span>
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Cash Book</span>
     </a>
 
 

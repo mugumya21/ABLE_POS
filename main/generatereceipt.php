@@ -18,6 +18,7 @@ if (isset($_POST['receipt-content'])) {
 
         // Insert receipt information into the database
         $insertReceiptQuery = "INSERT INTO receipts (patient_name, total_amount) VALUES (?, ?)";
+        
         $stmt = $conn->prepare($insertReceiptQuery);
 
         if ($stmt === false) {
@@ -165,7 +166,6 @@ if (isset($_POST['receipt-content'])) {
         </html>";
             // Output a link to print the receipt
             echo "<a href=\"javascript:window.print()\">Print Receipt</a>";
-            echo "<a href=\"sales.php\">Back to Sales</a>";
 
             // Output the HTML receipt for preview
             echo $htmlReceipt;
