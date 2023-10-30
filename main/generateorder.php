@@ -13,7 +13,7 @@ if (isset($_POST['order-content'])) {
 
     if ($orderData) {
         // Extract order information and order items
-        $customerName = $orderData['customerName'];
+        $patientName = $orderData['patientName'];
         $totalAmount = $orderData['totalAmount'];
         $orderItems = $orderData['items'];
 
@@ -21,7 +21,7 @@ if (isset($_POST['order-content'])) {
 
 
 // Insert data into the 'orders' table
-$insertOrderQuery = "INSERT INTO orders (customer_name, total_amount) VALUES (?, ?)";
+$insertOrderQuery = "INSERT INTO orders (patient_name, total_amount) VALUES (?, ?)";
 $stmt = $conn->prepare($insertOrderQuery);
 
 
@@ -29,7 +29,7 @@ if ($stmt === false) {
     die("Error: Failed to prepare order insertion query: " . $conn->error);
 }
 
-if ($stmt->bind_param("sd", $customerName, $totalAmount) === false) {
+if ($stmt->bind_param("sd", $patientName, $totalAmount) === false) {
     die("Error: Failed to bind parameters: " . $stmt->error);
 }
 
@@ -98,7 +98,7 @@ $htmlOrder = "
             line-height: 1.5;
         }
 
-        .customer-info {
+        .patient-info {
             margin-top: 20px;
         }
 
@@ -152,7 +152,7 @@ $htmlOrder = "
 <body>
     <div class=\"order-container\">
         <h1>Order</h1>
-        <p><strong>Customer Name:</strong> $customerName</p>
+        <p><strong>Patient Name:</strong> $patientName</p>
         <h2>Items</h2>
         <table>
             <thead>

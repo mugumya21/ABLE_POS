@@ -72,10 +72,10 @@
                 <div style="margin-top: -19px; margin-bottom: 21px;">
                     <a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
                 </div><br><br><br><br>
-                <!-- Customer name input field -->
+                <!-- patient name input field -->
                 <div class="form-group">
-                    <label for="customer-name">Customer Name:</label>
-                    <input type="text" class="form-control" id="customer-name" placeholder="Enter Customer Name">
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" class="form-control" id="patient-name" placeholder="Enter Patient Name">
                 </div>
                <!-- Dropdown list of products -->
                <select id="product-dropdown">
@@ -326,7 +326,7 @@
             // Function to generate receipt content
             function buildReceiptContent() {
                 var receiptContent = {
-                    customerName: $("#customer-name").val(), // Get the customer name from the input field
+                    patientName: $("#patient-name").val(), // Get the patient name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };
@@ -349,7 +349,7 @@
                  // Function to generate invoice content
                  function buildInvoiceContent() {
                 var invoiceContent = {
-                    customerName: $("#customer-name").val(), // Get the customer name from the input field
+                    patientName: $("#patient-name").val(), // Get the patient name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };
@@ -362,7 +362,7 @@
                  // Function to generate order content
                  function buildOrderContent() {
                 var orderContent = {
-                    customerName: $("#customer-name").val(), // Get the customer name from the input field
+                    patientName: $("#patient-name").val(), // Get the patient name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };

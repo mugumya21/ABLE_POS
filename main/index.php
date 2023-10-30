@@ -168,7 +168,7 @@ if ($position == 'Admin' || $position == 'SuperAdmin') {
 			<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 			<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
 			<li> <a href="expenses.php"><i class="icon-list-alt icon-2x"></i>Expenses</a></li>
-			<li><a href="customer.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
+			<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 		<br>
 			<li>
@@ -235,7 +235,7 @@ if ($position == 'Cashier') {
 				<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 				<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
 				<li><a href="expenses.php"><i class="icon-list-alt icon-2x"></i>Expenses</a></li>                                          
-				<li><a href="customer.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
+				<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
 				<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>  
                                               </li>
 			
@@ -272,8 +272,8 @@ if ($position == 'Cashier') {
     <a href="expenses.php" style="background-color: #e67e22;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Expenses</span>
     </a>
-    <a href="customer.php" style="background-color: #e74c3c;">
-        <span style="color: white;"><i class="icon-group icon-2x"></i><br> Customers</span>
+    <a href="patient.php" style="background-color: #e74c3c;">
+        <span style="color: white;"><i class="icon-group icon-2x"></i><br> Patients</span>
     </a>
 
     <a href="supplier.php" style="background-color: #d35400;">

@@ -71,7 +71,7 @@ $conn->close();
                         <li><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a></li>             
                         <li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 			<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
-			<li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a>                                    </li>
+			<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 
                         <br><br><br>		

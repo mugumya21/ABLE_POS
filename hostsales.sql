@@ -27,19 +27,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table patient `
 --
 
-CREATE TABLE IF NOT EXISTS `customer` (
-  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_name` varchar(100) NOT NULL,
+CREATE TABLE IF NOT EXISTS `patient` (
+  `patient_id` int(11) NOT NULL AUTO_INCREMENT,
+  `patient_name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `contact` varchar(100) NOT NULL,
   `membership_number` varchar(100) NOT NULL,
   `prod_name` varchar(550) NOT NULL,
   `expected_date` varchar(500) NOT NULL,
   `note` varchar(500) NOT NULL,
-  PRIMARY KEY (`customer_id`)
+  PRIMARY KEY (`patient_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
@@ -187,104 +187,42 @@ CREATE TABLE  IF NOT EXISTS purchasescategory (
 );
 
 
-CREATE TABLE   IF NOT EXISTS customersledger (
-    customersledger_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
-    dr_amount DECIMAL(10, 2),
-    cr_amount DECIMAL(10, 2),
-    details TEXT
-);
-
-
-
-CREATE TABLE  IF NOT EXISTS supliersledger (
-    supliersledger_id INT AUTO_INCREMENT PRIMARY KEY,
-    suplier_name VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
-    dr_amount DECIMAL(10, 2) ,
-    cr_amount DECIMAL(10, 2) ,
-    details TEXT
-);
-
 
 
 
 -- Create the 'receipts' table
 CREATE TABLE  IF NOT EXISTS receipts (
     receipt_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(255),
+    patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
     receipt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
 
--- Create the 'receipt_items' table
-CREATE TABLE   IF NOT EXISTS receipt_items (
-    receipt_item_id INT AUTO_INCREMENT PRIMARY KEY,
-    receipt_id INT,
-    product_id INT,
-    quantity INT,
-    price DECIMAL(10, 2),
-    total DECIMAL(10, 2),
-    product_name VARCHAR(255),
-    FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
-);
+
+
+-- from here, the tables are not inserted into the server automatically.  so i have to enter them manually. 
+
 
 CREATE TABLE   IF NOT EXISTS orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(255),
+    patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
-CREATE TABLE   IF NOT EXISTS order_items (
-    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT,
-    product_id INT,
-    quantity INT,
-    price DECIMAL(10, 2),
-    total DECIMAL(10, 2),
-    product_name VARCHAR(255),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
-);
+
 
 
 
 -- Create the invoices table
 CREATE TABLE  IF NOT EXISTS  invoices (
     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(255),
+    patient_name VARCHAR(255),
     total_amount DECIMAL(10, 2),
     invoice_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE TABLE  IF NOT EXISTS invoice_items (
-    invoice_item_id INT AUTO_INCREMENT PRIMARY KEY,
-    invoice_id INT,
-    product_id INT,
-    quantity INT,
-    price DECIMAL(10, 2),
-    total DECIMAL(10, 2),
-    product_name VARCHAR(255),
-    FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
-);
-
-ALTER TABLE invoice_items
-ADD CONSTRAINT fk_invoice_id
-FOREIGN KEY (invoice_id)
-REFERENCES invoices (invoice_id)
-ON DELETE CASCADE;
-
-
-
-
-
-
 
 
 CREATE TABLE IF NOT EXISTS cashpayouts (
@@ -294,14 +232,6 @@ CREATE TABLE IF NOT EXISTS cashpayouts (
     amount DECIMAL(10, 2) NOT NULL,
     expense_type VARCHAR(255) NOT NULL,
     comment VARCHAR(255)
-);
-
--- Create cashaccounts table
-CREATE TABLE IF NOT EXISTS cashaccounts (
-    cashaccount_id INT AUTO_INCREMENT PRIMARY KEY,
-    account_name VARCHAR(255) NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL,
-    INDEX (account_name)
 );
 
 
@@ -355,14 +285,6 @@ CREATE TABLE IF NOT EXISTS  cashathand (
 INSERT INTO cashathand (id, amount) VALUES (1, 0.00);
 
 
-CREATE TABLE IF NOT EXISTS assets (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    Description TEXT
-);
-
 
 ALTER TABLE expenses 
 ADD COLUMN from_account VARCHAR(255)  NOT NULL;
@@ -404,9 +326,19 @@ CREATE TABLE IF NOT EXISTS `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=58;
 
 
-ALTER TABLE products
-ADD COLUMN qty_unit VARCHAR(200) NOT NULL,
-ADD COLUMN product_type VARCHAR(200) NOT NULL;
 
 
 
+-- add them manually
+-- Create the 'receipt_items' table
+CREATE TABLE   IF NOT EXISTS receipt_items (
+    receipt_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    receipt_id INT,
+    product_id INT,
+    quantity INT,
+    price DECIMAL(10, 2),
+    total DECIMAL(10, 2),
+    product_name VARCHAR(255),
+    FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);

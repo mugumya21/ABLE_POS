@@ -10,14 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id']; // Retrieve the product ID from the AJAX request
     
 
-    $sql = "DELETE FROM customersledger WHERE customersledger_id = $id";
+    $sql = "DELETE FROM patient WHERE patient_id = $id";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect back to the page after deletion
-        header("Location: customersledger.php");
+        header("Location: patient.php");
         exit();
     } else {
-        echo "Error deleting record from customers ledger table: " . $conn->error;
+        echo "Error deleting record from product table: " . $conn->error;
     }
 }
 

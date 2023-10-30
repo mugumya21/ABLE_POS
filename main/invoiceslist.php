@@ -106,7 +106,7 @@
                     <thead>
                         <tr>
                             <th width="10%"> Invoice No </th>
-                            <th width="10%"> Customer Name </th>
+                            <th width="10%"> Patient Name </th>
                             <th width="10%"> Total Amount </th>
                             <th width="10%"> Action </th>
 
@@ -130,7 +130,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<td><a href="invoice.php?invoice_id=' . $row['invoice_id'] . '" style="color: blue; text-decoration: underline;">' . $row['invoice_id'] . '</a></td>';
-        echo '<td>' . $row['customer_name'] . '</td>';
+        echo '<td>' . $row['patient_name'] . '</td>';
         echo '<td>' . $row['total_amount'] . '</td>';
         echo '<td>';
         echo '<div style="display: flex; flex-direction: row;">';

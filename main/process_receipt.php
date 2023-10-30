@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "sales";
+$dbname = "hostsales";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cartData = json_decode($_POST["cartData"], true);
-    $customerName = $_POST["customerName"];
+    $patientName = $_POST["patientName"];
     $paymentMode = $_POST["paymentMode"];
 
     // Calculate the total amount based on the cart data
@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert receipt data into the 'receipts' table
-    $insertReceiptQuery = "INSERT INTO receipts (customer_name, payment_mode, total_amount) VALUES (?, ?, ?)";
+    $insertReceiptQuery = "INSERT INTO receipts (patient_name, payment_mode, total_amount) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($insertReceiptQuery);
-    $stmt->bind_param("ssd", $customerName, $paymentMode, $totalAmount);
+    $stmt->bind_param("ssd", $patientName, $paymentMode, $totalAmount);
 
     if ($stmt->execute()) {
         // Receipt data successfully inserted

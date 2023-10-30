@@ -20,7 +20,6 @@ $stmt->bind_param('ssssi', $expense_type, $date, $amount, $comment, $id);
 
 // Execute the query
 if ($stmt->execute()) {
-    // Redirect to customersledger.php if the update was successful
     header("location: expenses.php");
 } else {
     // Handle the case where the update failed

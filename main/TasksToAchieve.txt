@@ -11,9 +11,9 @@
         Done too ....       NB:Records should appear to the SuperAdmin ie, sales( cash, credit, clearance), purchases(cash, credit) and expenses(transport, meals, airtime, data, directors allowance, salaries,
         rent, water, electricity, stationary, renovation $ repairs, packaging, loading and offloading, IT solutions, fuel, office expenses, commission, ura taxes, local gov't taxes, donation, assets, others )
 
-2. Cashier should enter customers and suppliers into the database.
+2. Cashier should enter patients and suppliers into the database.
 
-        a) make customers shown in the table   ..edit them not yet
+        a) make patients shown in the table   ..edit them not yet
         b) make supliers shown in the table    ..edit them not yet
         
 
@@ -25,7 +25,7 @@
 
 
 In this code, add in dynamic  graph and pie chart showing the following, 
-sales report, expenses report, purchases report, suppliers report, profits report, loss report, products sold and bought, customer ledger report , supplier ledger report against weeks in a current year. 
+sales report, expenses report, purchases report, suppliers report, profits report, loss report, products sold and bought, patient ledger report , supplier ledger report against weeks in a current year. 
 
 
 
@@ -42,8 +42,7 @@ was trying to push all the data from the raffles.php files to a database but it 
 
 
 
-This code will display the remaining records, the total debit and credit amounts, and the total balance on each page of the Customers Ledger Report.
-in the ############# customersledgerreport ###############33
+This code will display the remaining records, the total debit and credit amounts, and the total balance on each page of the patients Ledger Report.
 
 
 Add purchase item, and it updates the products table , and delete purchase item

@@ -53,9 +53,8 @@
                         <li class="active"><a href="salessummary.php"><i class="icon-shopping-cart icon-2x"></i> Sales Summary</a>                </li>            
                         <li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 			<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
-			<li>	<a href="assestslist.php"><i class="icon-list-alt icon-2x"></i>Assets</a> </li>                               
 			<li> <a href="expenses.php"><i class="icon-list-alt icon-2x"></i>Expenses</a></li>
-			<li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a>                                    </li>
+			<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 
                         <br><br><br>		

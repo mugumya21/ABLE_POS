@@ -51,11 +51,11 @@
             <div class="well sidebar-nav">
                     <ul class="nav nav-list">
                         <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
-                        <li ><a href="cashaccounts.php"><i class="icon-list-alt icon-2x"></i> Cash Book</a></li>   
+                        <li ><a href="cashaccounts.php"><i class="icon-list-alt icon-2x"></i> Cash Records</a></li>   
                         <li class="active"><a href="cashtransfer.php"><i class="icon-list-alt icon-2x"></i> Cash Transfer</a></li>             
                         <li ><a href="sales.php"><i class="icon-list-alt icon-2x"></i> Sales</a></li>
                         <li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a></li>
-                        <li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a></li>
+                        <li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a></li>
          	
                         <li>
                             <div class="hero-unit-clock">

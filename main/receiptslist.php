@@ -105,7 +105,7 @@
                     <thead>
                         <tr>
                             <th width="10%"> Receipt No </th>
-                            <th width="10%"> Customer Name </th>
+                            <th width="10%">  Patient Name </th>
                             <th width="10%"> Total Amount </th>
                   
                         </tr>
@@ -127,7 +127,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<td><a href="receipt.php?receipt_id=' . $row['receipt_id'] . '" style="color: blue; text-decoration: underline;">' . $row['receipt_id'] . '</a></td>';
-        echo '<td>' . $row['customer_name'] . '</td>';
+        echo '<td>' . $row['patient_name'] . '</td>';
         echo '<td>' . $row['total_amount'] . '</td>';
         echo '</tr>';
     }

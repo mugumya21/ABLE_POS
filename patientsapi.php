@@ -4,9 +4,9 @@ session_start();
 
 // Database configuration
 $db_host = "localhost";
-$db_username = "paradiseagents_root";
-$db_password = "V.1901200229@MUNI";
-$db_name = "paradiseagents_db";
+$db_username = "root";
+$db_password = "";
+$db_name = "hostsales";
 
 // Create database connection
 $conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
@@ -23,27 +23,27 @@ $data = file_get_contents("php://input");
 $request = json_decode($data, true);
 
 // Check if 'action' key exists in the request
-if (isset($request['action']) && $request['action'] === "customer") {
-    // Handle customer action
-    // Query to fetch customer data
-    $customerQuery = "SELECT customer_id, customer_name, address, contact FROM customer";
-    $customerResult = mysqli_query($conn, $customerQuery);
+if (isset($request['action']) && $request['action'] === "patient") {
+    // Handle patient action
+    // Query to fetch patient data
+    $patientQuery = "SELECT patient_id, patient_name, address, contact FROM patient";
+    $patientResult = mysqli_query($conn, $patientQuery);
 
-    if ($customerResult && mysqli_num_rows($customerResult) > 0) {
-        $customers = array();
-        while ($row = mysqli_fetch_assoc($customerResult)) {
-            $customers[] = $row;
+    if ($patientResult && mysqli_num_rows($patientResult) > 0) {
+        $patients = array();
+        while ($row = mysqli_fetch_assoc($patientResult)) {
+            $patients[] = $row;
         }
         $response = array(
             "status" => "success",
-            "message" => "Customers data fetched successfully",
-            "customers" => $customers
+            "message" => "Patients data fetched successfully",
+            "patients" => $patients
         );
     } else {
-        // No customers found
+        // No patient found
         $response = array(
             "status" => "error",
-            "message" => "No customers found"
+            "message" => "No patients found"
         );
     }
 } else {

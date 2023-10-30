@@ -15,7 +15,7 @@ if (isset($_GET['invoice_id'])) {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $customerName = $row['customer_name'];
+            $patientName = $row['patient_name'];
             $totalAmount = $row['total_amount'];
 
             // Fetch invoice items based on invoice_id
@@ -90,7 +90,7 @@ if (isset($_GET['invoice_id'])) {
             line-height: 1.5;
         }
 
-        .customer-info {
+        .patient-info {
             margin-top: 20px;
         }
 
@@ -178,7 +178,7 @@ if (isset($_GET['invoice_id'])) {
              <a href="invoiceslist.php" class="back-link">Back</a>
         </div>
         <h1>Invoice No <?php echo $invoiceId; ?></h1>
-        <p><strong>Customer Name:</strong> <?php echo $customerName; ?></p>
+        <p><strong>Patient Name:</strong> <?php echo $patientName; ?></p>
         <h2>Items</h2>
         <table>
             <thead>

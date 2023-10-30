@@ -12,9 +12,9 @@
 	/* Database config */
 // Database configuration
 $db_host = "localhost";
-$db_username = "paradiseagents_root";
-$db_password = "V.1901200229@MUNI";
-$db_name = "paradiseagents_db";
+$db_username = "root";
+$db_password = "";
+$db_name = "hostsales";
 
 // $db_host = "localhost";
 // $db_username = "root";

@@ -117,7 +117,7 @@ $finalcode='RS-'.createRandomPassword();
               <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard  </a></li> 
 			<li><a href="sales.php?id=cash&invoice=<?php echo $finalcode ?>"><i class="icon-shopping-cart icon-2x"></i> Sales </a>  </li>             
 			<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
-			<li class="active"><a href="customer.php"><i class="icon-group icon-2x"></i> Customers </a>                                    </li>
+			<li class="active"><a href="patient.php"><i class="icon-group icon-2x"></i> Patients </a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 			<li><a href="salesreport.php?d1=0&d2=0"><i class="icon-bar-chart icon-2x"></i> Sales Report</a>                </li>
 					<br><br><br><br><br><br>		
@@ -136,11 +136,11 @@ $finalcode='RS-'.createRandomPassword();
         </div><!--/span-->
 	<div class="span10">
 	<div class="contentheader">
-			<i class="icon-group"></i> Customers
+			<i class="icon-group"></i> Patients
 			</div>
 			<ul class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li> /
-			<li class="active">Customers</li>
+			<li class="active">Patients</li>
 			</ul>
 
 <div style="margin-top: -19px; margin-bottom: 21px;">
@@ -154,7 +154,7 @@ $finalcode='RS-'.createRandomPassword();
 			}
 
 			// Create a prepared statement
-			$query = "SELECT * FROM customer ORDER BY customer_id DESC";
+			$query = "SELECT * FROM patient ORDER BY patient_id DESC";
 			if ($result = $conn->prepare($query)) {
 				$result->execute();
 
@@ -175,11 +175,11 @@ $finalcode='RS-'.createRandomPassword();
 			?>
 
 			<div style="text-align:center;">
-			Total Number of Customers: <font color="green" style="font:bold 22px 'Aleo';"><?php echo $rowcount;?></font>
+			Total Number of Patients: <font color="green" style="font:bold 22px 'Aleo';"><?php echo $rowcount;?></font>
 			</div>
 </div>
-<input type="text" name="filter" style="padding:15px;" id="filter" placeholder="Search Customer..." autocomplete="off" />
-<a rel="facebox" href="addcustomer.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="icon-plus-sign icon-large"></i> Add Customer</button></a><br><br>
+<input type="text" name="filter" style="padding:15px;" id="filter" placeholder="Search patient..." autocomplete="off" />
+<a rel="facebox" href="addpatient.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="icon-plus-sign icon-large"></i> Add Patient</button></a><br><br>
 
 <table class="table table-bordered" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
@@ -202,7 +202,7 @@ $finalcode='RS-'.createRandomPassword();
 			}
 
 			// Create a prepared statement
-			$query = "SELECT * FROM customer ORDER BY customer_id DESC";
+			$query = "SELECT * FROM patient ORDER BY patient_id DESC";
 			if ($result = $conn->prepare($query)) {
 				$result->execute();
 
@@ -231,22 +231,22 @@ $finalcode='RS-'.createRandomPassword();
 			$currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
 			$recordsPerPage = 5;
 			$offset = ($currentPage - 1) * $recordsPerPage;
-			$sql = "SELECT * FROM customer ORDER BY customer_id  DESC LIMIT $offset, $recordsPerPage";
+			$sql = "SELECT * FROM patient ORDER BY patient_id  DESC LIMIT $offset, $recordsPerPage";
 		   $result = $conn->query($sql);
 
 			if ($result -> num_rows >0) {
 				while ($row = $result->fetch_assoc()) {
 					echo '<tr class="record">';
-					echo '<td>' . $row['customer_name'] . '</td>';
+					echo '<td>' . $row['patient_name'] . '</td>';
 					echo '<td>' . $row['address'] . '</td>';
 					echo '<td>' . $row['contact'] . '</td>';
 					echo '<td>';
   // Check if the user is a 'SuperAdmin' or 'Admin' to display action buttons
   if ($position == 'SuperAdmin' || $position == 'Admin') {
 	echo '<div style="display: flex; flex-direction: row;">';
-	echo '<a rel="facebox" href="editcustomer.php?id=' . $row['customer_id'] . '"><button class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</button></a>';
-	echo '<form method="POST" action="deletecustomer.php" style="margin-left: 5px;">';
-	echo '<input type="hidden" name="id" value="' . $row['customer_id'] . '">';
+	echo '<a rel="facebox" href="editpatient.php?id=' . $row['patient_id'] . '"><button class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i> Edit</button></a>';
+	echo '<form method="POST" action="deletepatient.php" style="margin-left: 5px;">';
+	echo '<input type="hidden" name="id" value="' . $row['patient_id'] . '">';
 	echo '<button type="submit" class="btn btn-danger btn-mini" onclick="return confirm(\'Are you sure want to delete? There is NO undo!\')">';
 	echo '<i class="icon-trash"></i> Delete';
 	echo '</button>';
@@ -259,7 +259,7 @@ echo '</td>';
 echo '</tr>';
 }
 } else {
-echo '<tr><td colspan="5">No Customer found.</td></tr>';
+echo '<tr><td colspan="5">No patient found.</td></tr>';
 }
 
 // Close the database connection
@@ -277,7 +277,7 @@ $conn->close();
 
                             // Generate pagination links
                             for ($i = 1; $i <= $totalPages; $i++) {
-                                echo '<li><a href="supplier.php?page=' . $i . '">' . $i . '</a></li>';
+                                echo '<li><a href="patient.php?page=' . $i . '">' . $i . '</a></li>';
                             }
                         ?>
                     </ul>
