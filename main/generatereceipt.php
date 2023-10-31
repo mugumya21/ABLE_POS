@@ -12,20 +12,19 @@ if (isset($_POST['receipt-content'])) {
 
     if ($receiptData) {
         // Extract receipt information and receipt items
-        $patientName = $receiptData['patientName'];
+        $customerName = $receiptData['customerName'];
         $totalAmount = $receiptData['totalAmount'];
         $receiptItems = $receiptData['items'];
 
         // Insert receipt information into the database
-        $insertReceiptQuery = "INSERT INTO receipts (patient_name, total_amount) VALUES (?, ?)";
-        
+        $insertReceiptQuery = "INSERT INTO receipts (customer_name, total_amount) VALUES (?, ?)";
         $stmt = $conn->prepare($insertReceiptQuery);
 
         if ($stmt === false) {
             die("Error: Failed to prepare the receipt insertion query: " . $conn->error);
         }
 
-        if ($stmt->bind_param("sd", $patientName, $totalAmount) === false) {
+        if ($stmt->bind_param("sd", $customerName, $totalAmount) === false) {
             die("Error: Failed to bind parameters: " . $stmt->error);
         }
 
@@ -83,7 +82,7 @@ if (isset($_POST['receipt-content'])) {
             line-height: 1.5;
         }
 
-        .patient-info {
+        .customer-info {
             margin-top: 20px;
         }
 
@@ -128,7 +127,7 @@ if (isset($_POST['receipt-content'])) {
             <body>
                 <div class=\"receipt-container\">
                 <h1>Receipt</h1>
-                <p><strong>Patient Name:</strong> $patientName</p>
+                <p><strong>Customer Name:</strong> $customerName</p>
                 <h2>Items</h2>
                 <table>
                     <thead>
@@ -166,6 +165,7 @@ if (isset($_POST['receipt-content'])) {
         </html>";
             // Output a link to print the receipt
             echo "<a href=\"javascript:window.print()\">Print Receipt</a>";
+            echo "<a href=\"sales.php\">Back to Sales</a>";
 
             // Output the HTML receipt for preview
             echo $htmlReceipt;

@@ -5,7 +5,7 @@ require_once('auth.php');
 include('../connect.php'); // Include your database connection file here
 ?>
 <head>
-    <title>Receipts Summary Report</title>
+    <title>Invoices Summary Report</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Include other CSS and JS libraries as needed -->
 </head>
@@ -22,7 +22,7 @@ include('../connect.php'); // Include your database connection file here
                 <li class="active">Invoices Summary Report</li>
             </ul>
 
-            <!-- Form to search receipts summary -->
+            <!-- Form to search Invoices summary -->
             <div style="margin-top: 20px;">
                 <center>
                     <form action="invoicessummaryreport.php" method="POST">
@@ -34,15 +34,15 @@ include('../connect.php'); // Include your database connection file here
                         <button type="submit" class="btn btn-info">Search</button>
 
                         <!-- Buttons for predefined date ranges -->
-                        <button type="button" class="btn btn-success" onclick="getTodaysReceiptsSummary()">Today</button>
-                        <button type="button" class="btn btn-primary" onclick="getWeeklyReceiptsSummary()">This Week</button>
-                        <button type="button" class="btn btn-warning" onclick="getMonthlyReceiptsSummary()">Monthly</button>
-                        <button type="button" class="btn btn-danger" onclick="getYearlyReceiptsSummary()">Yearly</button>
+                        <button type="button" class="btn btn-success" onclick="getTodaysInvoicesSummary()">Today</button>
+                        <button type="button" class="btn btn-primary" onclick="getWeeklyInvoicesSummary()">This Week</button>
+                        <button type="button" class="btn btn-warning" onclick="getMonthlyInvoicesSummary()">Monthly</button>
+                        <button type="button" class="btn btn-danger" onclick="getYearlyInvoicesSummary()">Yearly</button>
                     </form>
                 </center>
             </div>
 
-            <!-- Display receipts summary results here -->
+            <!-- Display Invoices summary results here -->
             <div class="content" id="content">
                 <?php
                 if (isset($_POST['d1']) && isset($_POST['d2'])) {
@@ -61,33 +61,33 @@ include('../connect.php'); // Include your database connection file here
                             echo '<table class="table">';
                             echo '<thead>';
                             echo '<tr>';
-                            echo '<th>Receipt No</th>';
+                            echo '<th>Invoice No</th>';
                             echo '<th>Date</th>';
                             echo '<th>Amount (UGX)</th>';
                             echo '</tr>';
                             echo '</thead>';
                             echo '<tbody>';
 
-                            $totalReceiptsSummary = 0;
+                            $totalInvoicesSummary = 0;
 
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
-                                echo '<td>' . $row['receipt_id'] . '</td>';
+                                echo '<td>' . $row['invoice_id'] . '</td>';
                                 echo '<td>' . $row['date'] . '</td>';
-                                echo '<td>' . number_format($row['amount']) . '</td>';
+                                echo '<td>' . number_format($row['total_amount']) . '</td>';
                                 echo '</tr>';
 
-                                $totalReceiptsSummary += (float)$row['amount'];
+                                $totalInvoicesSummary += (float)$row['amount'];
                             }
 
                             echo '</tbody>';
                             echo '</table>';
 
-                            // Display the total Receipts Summary
+                            // Display the total Invoices Summary
                             $dateRange = 'from ' . $d1 . ' to ' . $d2;
-                            echo '<div>Total Amount ' . $dateRange . ': <strong>UGX ' . number_format($totalReceiptsSummary) . '</strong></div>';
+                            echo '<div>Total Amount ' . $dateRange . ': <strong>UGX ' . number_format($totalInvoicesSummary) . '</strong></div>';
                         } else {
-                            echo 'No receipts found.';
+                            echo 'No Invoices found.';
                         }
 
                         $stmt->close();
@@ -104,7 +104,7 @@ include('../connect.php'); // Include your database connection file here
 
 <!-- JavaScript functions for handling button clicks -->
 <script>
-    function getTodaysReceiptsSummary() {
+    function getTodaysInvoicesSummary() {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
@@ -115,7 +115,7 @@ include('../connect.php'); // Include your database connection file here
         document.querySelector('form').submit();
     }
 
-    function getWeeklyReceiptsSummary() {
+    function getWeeklyInvoicesSummary() {
         var today = new Date();
         var firstDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
         var lastDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 6);
@@ -126,7 +126,7 @@ include('../connect.php'); // Include your database connection file here
         document.querySelector('form').submit();
     }
 
-    function getMonthlyReceiptsSummary() {
+    function getMonthlyInvoicesSummary() {
         var today = new Date();
         var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
         var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -137,7 +137,7 @@ include('../connect.php'); // Include your database connection file here
         document.querySelector('form').submit();
     }
 
-    function getYearlyReceiptsSummary() {
+    function getYearlyInvoicesSummary() {
         var today = new Date();
         var firstDay = new Date(today.getFullYear(), 0, 1);
         var lastDay = new Date(today.getFullYear(), 11, 31);

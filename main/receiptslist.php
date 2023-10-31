@@ -54,7 +54,8 @@
                         <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
                         <li><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a></li>             
                         <li class="active"><a href="receiptslist.php"><i class="icon-list-alt icon-2x"></i> Receipts</a></li>
-                        <li><a href="#"><i class="icon-group icon-2x"></i> Invoices</a></li>
+                        <li><a href="invoiceslist.php"><i class="icon-group icon-2x"></i> Invoices</a></li>
+                        <li><a href="orderslist.php"><i class="icon-group icon-2x"></i> Orders</a></li>
                         <br><br><br>		
                         <li>
                             <div class="hero-unit-clock">
@@ -95,27 +96,16 @@
                     ?>
                     <div style="text-align:center;">
                         Total Number of Receipts:  <font color="green" style="font:bold 22px 'Aleo';">[<?php echo $rowcount;?>]</font>
-                        <?php
-// Calculate total amount from all receipts
-$sqlTotalAmount = "SELECT SUM(total_amount) AS totalAmount FROM receipts";
-$resultTotalAmount = $conn->query($sqlTotalAmount);
-$rowTotalAmount = $resultTotalAmount->fetch_assoc();
-$totalAmount = $rowTotalAmount['totalAmount'];
-?>
-<br><br>
-<p>Total amount Ugx <strong><?php echo number_format($totalAmount, 2); ?></strong></p>
-            
                     </div>
                     <div style="text-align:center;">
                     </div>
                 </div>
                 <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Receipt No..." autocomplete="off" />
-                
-    <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
+                <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
                     <thead>
                         <tr>
-                        <th width="10%">  Date</th>
                             <th width="10%"> Receipt No </th>
+                            <th width="10%"> Customer Name </th>
                             <th width="10%"> Total Amount </th>
                   
                         </tr>
@@ -136,9 +126,8 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<td>' . $row['receipt_date'] . '</td>';
         echo '<td><a href="receipt.php?receipt_id=' . $row['receipt_id'] . '" style="color: blue; text-decoration: underline;">' . $row['receipt_id'] . '</a></td>';
-        
+        echo '<td>' . $row['customer_name'] . '</td>';
         echo '<td>' . $row['total_amount'] . '</td>';
         echo '</tr>';
     }

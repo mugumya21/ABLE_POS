@@ -14,7 +14,7 @@
 $db_host = "localhost";
 $db_username = "root";
 $db_password = "";
-$db_name = "hostsales";
+$db_name = "sales";
 
 // $db_host = "localhost";
 // $db_username = "root";

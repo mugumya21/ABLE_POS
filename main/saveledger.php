@@ -35,6 +35,6 @@ $qa = $db->prepare($sqla);
 $qa->execute(array($balance,$f,$b));
 
 
-header("location: patient_ledger.php.?cname=$b");
+header("location: customer_ledger.php.?cname=$b");
 
 ?>

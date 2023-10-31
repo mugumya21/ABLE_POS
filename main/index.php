@@ -167,8 +167,9 @@ if ($position == 'Admin' || $position == 'SuperAdmin') {
 			<li><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a>  </li>             
 			<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 			<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
+			<li>	<a href="assets.php"><i class="icon-list-alt icon-2x"></i>Assets</a> </li>                               
 			<li> <a href="expenses.php"><i class="icon-list-alt icon-2x"></i>Expenses</a></li>
-			<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
+			<li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 		<br>
 			<li>
@@ -197,25 +198,31 @@ if ($position == 'Admin' || $position == 'SuperAdmin') {
  
     <a href="salessummaryreport.php" style="background-color: #16a085;">
         <span style="color: white;"><i class="icon-shopping-cart icon-2x"></i><br> Sales Summary Report</span>
-    </a>              
-	     
+    </a>               
     <a href="purchasesreport.php" style="background-color: #2ecc71;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Purchases Summary Report</span>
     </a>  
     <a href="expensesreport.php" style="background-color: #3498db;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Expenses Summary Report</span>
     </a>                                
-	<a href="#" style="background-color: rgba(84, 24, 217, 0.7);">
+	<a href="incomestatement.php" style="background-color: rgba(84, 24, 217, 0.7);">
     <span style="color: white;"><i class="icon-bar-chart icon-2x"></i><br> Income Statement Report</span>
 </a>
-
-   
+<a href="receiptssummaryreport.php" style="background-color: #168085;">
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Receipts Summary Report</span>
+    </a> 
+    <a href="invoicessummaryreport.php" style="background-color: #165285;">
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Invoices Summary Report</span>
+    </a>           
+    <a href="customersledgerreport.php" style="background-color: #2980b9;">
+        <span style="color: white;"><i class="icon-bar-chart icon-2x"></i><br> Customers Ledger Report</span>
+    </a>
     <a href="graphicalreport.php" style="background-color: #15a485;">
         <span style="color: white;"><i class="icon-bar-chart icon-2x"></i><br> Graphical Analysis Report</span>
+    </a>
+    <a href="customersledger.php" style="background-color: #d35400;">
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Customers Ledger</span>
     </a>   
-	<a href="receiptssummaryreport.php" style="background-color: #168085;">
-        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Receipts Summary Report</span>
-    </a>      
     <a href="cashaccounts.php" style="background-color:  #8e44ad;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Cash Book</span>
     </a>
@@ -238,8 +245,9 @@ if ($position == 'Cashier') {
 				<li><a href="sales.php?id=cash&invoice=<?php echo $finalcode ?>"><i class="icon-shopping-cart icon-2x"></i> Sales</a>  </li> 
 				<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
 				<li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a>  </li>
+				<li>	<a href="assets.php"><i class="icon-list-alt icon-2x"></i>Assets</a> </li>
 				<li><a href="expenses.php"><i class="icon-list-alt icon-2x"></i>Expenses</a></li>                                          
-				<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
+				<li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a>                                    </li>
 				<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>  
                                               </li>
 			
@@ -272,14 +280,18 @@ if ($position == 'Cashier') {
     <a href="purchaseslist.php" style="background-color: #2980b9;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Purchases</span>
     </a>
-
+    <a href="assestslist.php" style="background-color: #9b59b6;">
+        <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Assets</span>
+    </a>
     <a href="expenses.php" style="background-color: #e67e22;">
         <span style="color: white;"><i class="icon-list-alt icon-2x"></i><br> Expenses</span>
     </a>
-    <a href="patient.php" style="background-color: #e74c3c;">
-        <span style="color: white;"><i class="icon-group icon-2x"></i><br> Patients</span>
+    <a href="customer.php" style="background-color: #e74c3c;">
+        <span style="color: white;"><i class="icon-group icon-2x"></i><br> Customers</span>
     </a>
-
+    <a href="customersledger.php" style="background-color: #95a5a6 ;">
+        <span style="color: white;"><i class="icon-group icon-2x"></i><br> Customer Ledger</span>
+    </a>
     <a href="supplier.php" style="background-color: #d35400;">
         <span style="color: white;"><i class="icon-group icon-2x"></i><br> Suppliers</span>
     </a>

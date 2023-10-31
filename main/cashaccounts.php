@@ -52,10 +52,10 @@
                     <ul class="nav nav-list">
                         <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
                         <li class="active"><a href="cashaccounts.php"><i class="icon-list-alt icon-2x"></i> Cash Book</a></li>   
-                        <li><a href="#"><i class="icon-list-alt icon-2x"></i> Cash Transfer</a></li>             
+                        <li><a href="cashtransfer.php"><i class="icon-list-alt icon-2x"></i> Cash Transfer</a></li>             
                         <li ><a href="sales.php"><i class="icon-list-alt icon-2x"></i> Sales</a></li>
                         <li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a></li>
-                        <li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a></li>
+                        <li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a></li>
          	
                         <li>
                             <div class="hero-unit-clock">
@@ -66,7 +66,7 @@
                 </div><!--/.well -->            </div><!--/span-->
             <div class="span10">
                  <div class="contentheader">
-                 <center> <i class="icon-table"></i> Cash Book </center></strong>
+                 <center> <i class="icon-table"></i> Today's Cash Book </center></strong>
                 </div>
             <?php 
     // Check for error message and display it
@@ -78,7 +78,7 @@
     ?>
                 <div id="mainmain">
      
-                <?php
+<?php
 include('../connect.php');
 
 // Check if the connection is successful
@@ -86,35 +86,28 @@ if (!$conn) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query to get total cash sales from cashathand table
-$sqlCashAtHand = "SELECT SUM(amount) AS total_cash_collections FROM cashathand";
-
-// SQL query to get total cash sales from receipts table
-$sqlReceipts = "SELECT SUM(total_amount) AS total_cash_collections FROM receipts";
-
-// Combine the results using UNION
-$sqlTotalCashSales = "SELECT SUM(total_cash_collections) AS total_cash_sales FROM (($sqlCashAtHand) UNION ($sqlReceipts)) AS combined_sales";
-
-$resultTotalCashSales = $conn->query($sqlTotalCashSales);
+$sqlTotalCashInHand = "SELECT SUM(amount) AS total_cash_collections FROM cashathand";
+$resultTotalCashInHand = $conn->query($sqlTotalCashInHand);
 
 // Check if the query was successful
-if (!$resultTotalCashSales) {
+if (!$resultTotalCashInHand) {
     die("Error executing the query: " . $conn->error);
 }
 
-$rowTotalCashSales = $resultTotalCashSales->fetch_assoc();
+$rowTotalCashInHand = $resultTotalCashInHand->fetch_assoc();
 
 // Check if a row was fetched
-if ($rowTotalCashSales === null || $rowTotalCashSales['total_cash_sales'] === null) {
-    $totalCashSales = 0; // Set a default value if no data is found
+if ($rowTotalCashInHand === null || $rowTotalCashInHand['total_cash_collections'] === null) {
+    $totalCashInHand = 0; // Set a default value if no data is found
 } else {
-    $totalCashSales = $rowTotalCashSales['total_cash_sales'];
+    $totalCashInHand = $rowTotalCashInHand['total_cash_collections'];
 }
 
 // Close the database connection
 $conn->close();
 ?>
-<a href="#">Total Cash collections <br><br><strong>Ugx <?php echo number_format($totalCashSales, 2); ?></strong></a>
+<a href="#">Cash Sales <br><br><strong>Ugx <?php echo number_format($totalCashInHand, 2); ?></strong></a>
+
 
                     <?php
                     include('../connect.php');
@@ -123,7 +116,12 @@ $conn->close();
                     if (!$conn) {
                         die("Connection failed: " . $conn->connect_error);
                     }
-         
+                    $sqlTotalCashSales = "SELECT SUM(amount) AS total_cash_sales FROM salessummary WHERE sales_type = 'cash sales'";
+                    $resultTotalCashSales = $conn->query($sqlTotalCashSales);
+                    $rowTotalCashSales = $resultTotalCashSales->fetch_assoc();
+                    $totalCashSales = $rowTotalCashSales['total_cash_sales'];
+
+
 
                     $sqlTotalCashDeposit = "SELECT SUM(amount) AS total_cash_deposit FROM salessummary WHERE sales_type = 'cash deposit'";
                     $resultTotalCashDeposit = $conn->query($sqlTotalCashDeposit);
@@ -147,6 +145,7 @@ $conn->close();
                     // Close the database connection
                     $conn->close();
                     ?>
+                    <a href="#">Total Cash Collections <br><br><strong>Ugx <?php echo number_format($totalCashSales, 2); ?></strong></a>
                     <a href="#">Cash Deposit <br><br><strong>Ugx <?php echo number_format($totalCashDeposit, 2); ?></strong></a>
                     <a href="#">Credit Clearance <br><br><strong>Ugx <?php echo number_format($totalInvoiceClearance, 2); ?></strong></a>
 

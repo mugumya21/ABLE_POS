@@ -55,7 +55,7 @@
                         <li class="active"><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a></li>
                         <li><a href="#.php"><i class="icon-list-alt icon-2x"></i> Convert Qty Unit</a></li>
                         <li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a></li>
-                        <li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a></li>
+                        <li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a></li>
                         <li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a></li>
                         <br><br><br>		
                         <li>

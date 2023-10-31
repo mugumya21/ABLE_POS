@@ -104,7 +104,7 @@ background-repeat:no-repeat;
 <input type="hidden" name="cashier" value="<?php echo $_GET['cashier']; ?>" />
 <input type="hidden" name="profit" value="<?php echo $_GET['totalprof']; ?>" />
 <center>
-<input type="text" size="25" value="" name="cname" id="country" onkeyup="suggest(this.value);" onblur="fill();" class="" autocomplete="off" placeholder="Enter Patient Name" style="width: 268px; height:30px;" />
+<input type="text" size="25" value="" name="cname" id="country" onkeyup="suggest(this.value);" onblur="fill();" class="" autocomplete="off" placeholder="Enter Customer Name" style="width: 268px; height:30px;" />
      
       <div class="suggestionsBox" id="suggestions" style="display: none;">
         <div class="suggestionList" id="suggestionsList"> &nbsp; </div>

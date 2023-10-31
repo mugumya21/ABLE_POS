@@ -48,7 +48,8 @@
                         <li class="active"><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a></li>  
                         <li><a href="salessummary.php"><i class="icon-shopping-cart icon-2x"></i> Sales Summary</a></li>                        
                         <li><a href="receiptslist.php"><i class="icon-list-alt icon-2x"></i> Receipts</a>                                     </li>
-                        <li><a href="#"><i class="icon-list-alt icon-2x"></i> Invoices</a>  </li>
+                        <li><a href="invoiceslist.php"><i class="icon-list-alt icon-2x"></i> Invoices</a>  </li>
+                        <li>	<a href="#"><i class="icon-list-alt icon-2x"></i>Orders</a> </li> 
                         <li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>                              
                         
                         <br>	
@@ -71,10 +72,10 @@
                 <div style="margin-top: -19px; margin-bottom: 21px;">
                     <a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
                 </div><br><br><br><br>
-                <!-- patient name input field -->
+                <!-- Customer name input field -->
                 <div class="form-group">
-                    <label for="patient-name">Patient Name:</label>
-                    <input type="text" class="form-control" id="patient-name" placeholder="Enter Patient Name">
+                    <label for="customer-name">Customer Name:</label>
+                    <input type="text" class="form-control" id="customer-name" placeholder="Enter Customer Name">
                 </div>
                <!-- Dropdown list of products -->
                <select id="product-dropdown">
@@ -104,11 +105,11 @@
                     <table class="hoverTable" id="cartTable" data-responsive="table" style="text-align: left;">
                         <thead>
                             <tr>
-                                <th width="20%"> Product </th>
-                                <th width="10%"> Quantity </th>
-                                <th width="10%"> Price </th>
-                                <th width="10%"> Total </th>
-                                <th width="10%"> Action </th>
+                                <th width="50%"> Product </th>
+                                <th width="30%"> Quantity </th>
+                                <th width="20%"> Price </th>
+                                <th width="20%"> Total </th>
+                                <th width="20%"> Action </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -325,7 +326,7 @@
             // Function to generate receipt content
             function buildReceiptContent() {
                 var receiptContent = {
-                    patientName: $("#patient-name").val(), // Get the patient name from the input field
+                    customerName: $("#customer-name").val(), // Get the customer name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };
@@ -348,7 +349,7 @@
                  // Function to generate invoice content
                  function buildInvoiceContent() {
                 var invoiceContent = {
-                    patientName: $("#patient-name").val(), // Get the patient name from the input field
+                    customerName: $("#customer-name").val(), // Get the customer name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };
@@ -361,7 +362,7 @@
                  // Function to generate order content
                  function buildOrderContent() {
                 var orderContent = {
-                    patientName: $("#patient-name").val(), // Get the patient name from the input field
+                    customerName: $("#customer-name").val(), // Get the customer name from the input field
                     totalAmount: calculateGrandTotal(), // Calculate and get the total amount
                     items: cartData // Include the cart items
                 };

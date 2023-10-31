@@ -107,7 +107,7 @@ $finalcode='RS-'.createRandomPassword();
               <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
 			<li><a href="sales.php?id=cash&invoice=<?php echo $finalcode ?>"><i class="icon-shopping-cart icon-2x"></i> Sales</a>  </li>             
 			<li><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a>                                     </li>
-			<li><a href="patient.php"><i class="icon-group icon-2x"></i> Patients</a>                                    </li>
+			<li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a>                                    </li>
 			<li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a>                                    </li>
 			<li class="active"><a href="salesreport.php?d1=0&d2=0"><i class="icon-bar-chart icon-2x"></i> Sales Report</a>                </li>
 
@@ -152,7 +152,7 @@ Sales Report from&nbsp;<?php echo $_GET['d1'] ?>&nbsp;to&nbsp;<?php echo $_GET['
 		<tr>
 			<th width="13%"> Transaction ID </th>
 			<th width="13%"> Transaction Date </th>
-			<th width="20%"> Patient Name </th>
+			<th width="20%"> Customer Name </th>
 			<th width="16%"> Invoice Number </th>
 			<th width="18%"> Amount </th>
 			<th width="13%"> Profit </th>

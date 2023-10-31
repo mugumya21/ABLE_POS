@@ -6,6 +6,7 @@
 
 the above code is for cart.php 
 help me and create for me other pages and features that will link up with cart page so as i make sales both cash and on credit and and generate a receipt and invoice respectively. 
+to change from one git repository to another, do this beloe;
 
 
 ##### how to keep the php appliaction running on xampp server active, so as the bsuness owner doesnt keep opening the xampp sever ####

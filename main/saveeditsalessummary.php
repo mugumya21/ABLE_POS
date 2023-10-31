@@ -20,6 +20,7 @@ $stmt->bind_param('ssssi', $sales_type, $date, $amount, $comment, $id);
 
 // Execute the query
 if ($stmt->execute()) {
+    // Redirect to customersledger.php if the update was successful
     header("location: salessummary.php");
 } else {
     // Handle the case where the update failed

@@ -57,7 +57,7 @@
                     <li class="active"><a href="purchaseslist.php"><i class="icon-table icon-large"></i> Purchases <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
                     <li><a href="addpurchases_item.php"><i class="icon-table icon-large"></i> Add Purchases <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
                     <li><a href="products.php"><i class="icon-table icon-large"></i> Products <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
-                    <li><a href="patient.php"><i class="icon-group icon-large"></i> Patients <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
+                    <li><a href="customer.php"><i class="icon-group icon-large"></i> Customers <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
                     <li><a href="supplier.php"><i class="icon-group icon-large"></i> Suppliers <div class="pull-right"><i class="icon-circle-arrow-right icon-large"></i></div></a></li>
                 </ul>
             </div><!--/.well -->

@@ -11,14 +11,14 @@ if (isset($_POST['invoice-content'])) {
 
     if ($invoiceData) {
         // Extract invoice information and invoice items
-        $patientName = $invoiceData['patientName'];
+        $customerName = $invoiceData['customerName'];
         $totalAmount = $invoiceData['totalAmount'];
         $invoiceItems = $invoiceData['items'];
 
 
 
 // Insert data into the 'invoices' table
-$insertInvoiceQuery  = "INSERT INTO invoices (patient_name, total_amount) VALUES (?, ?)";
+$insertInvoiceQuery  = "INSERT INTO invoices (customer_name, total_amount) VALUES (?, ?)";
 $stmt = $conn->prepare($insertInvoiceQuery);
 
 
@@ -26,7 +26,7 @@ if ($stmt === false) {
     die("Error: Failed to prepare the invoice insertion query: " . $conn->error);
 }
 
-if ($stmt->bind_param("sd", $patientName, $totalAmount) === false) {
+if ($stmt->bind_param("sd", $customerName, $totalAmount) === false) {
     die("Error: Failed to bind parameters: " . $stmt->error);
 }
 
@@ -95,7 +95,7 @@ $htmlInvoice = "
             line-height: 1.5;
         }
 
-        .patient-info {
+        .customer-info {
             margin-top: 20px;
         }
 
@@ -140,7 +140,7 @@ $htmlInvoice = "
 <body>
     <div class=\"invoice-container\">
         <h1>Invoice</h1>
-        <p><strong>Patient Name:</strong> $patientName</p>
+        <p><strong>Customer Name:</strong> $customerName</p>
         <h2>Items</h2>
         <table>
             <thead>
