@@ -1,6 +1,6 @@
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<form action="savepatient.php" method="post">
-<center><h4><i class="icon-plus-sign icon-large"></i> Add Patient</h4></center>
+<form action="savecustomer.php" method="post">
+<center><h4><i class="icon-plus-sign icon-large"></i> Add Customer</h4></center>
 <hr>
 <div id="ac">
 <span>Full Name : </span><input type="text" style="width:265px; height:30px;" name="name" placeholder="Full Name" Required/><br>

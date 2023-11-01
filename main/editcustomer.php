@@ -8,7 +8,7 @@ if (!$conn) {
 }
 
 $id = $_GET['id'];
-$result = $conn->prepare("SELECT * FROM patient WHERE patient_id= ?");
+$result = $conn->prepare("SELECT * FROM customer WHERE customer_id= ?");
 $result->bind_param('i', $id);
 $result->execute();
 $row = $result->get_result()->fetch_assoc(); // Fetch a single row
@@ -21,12 +21,12 @@ if ($row) {
     <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <form action="saveeditpatient.php" method="post">
-        <center><h4><i class="icon-edit icon-large"></i> Edit Patient</h4></center>
+    <form action="saveeditcustomer.php" method="post">
+        <center><h4><i class="icon-edit icon-large"></i> Edit Customer</h4></center>
         <hr>
         <div id="ac">
             <input type="hidden" name="memi" value="<?php echo $id; ?>" />
-            <span>Full Name : </span><input type="text" style="width:265px; height:30px;" name="name" value="<?php echo $row['patient_name']; ?>" /><br>
+            <span>Full Name : </span><input type="text" style="width:265px; height:30px;" name="name" value="<?php echo $row['customer_name']; ?>" /><br>
             <span>Address : </span><input type="text" style="width:265px; height:30px;" name="address" value="<?php echo $row['address']; ?>" /><br>
             <span>Contact : </span><input type="text" style="width:265px; height:30px;" name="contact" value="<?php echo $row['contact']; ?>" /><br>
            
@@ -41,7 +41,7 @@ if ($row) {
 </html>
 <?php
 } else {
-    echo 'No patient found.';
+    echo 'No customer found.';
 }
 
 // Close the database connection

@@ -10,9 +10,9 @@ $contact = $_POST['contact'];
 
 
 // Prepare the SQL query
-$sql = "UPDATE patient 
-        SET patient_name=?, address=?, contact=?
-		WHERE patient_id=?";
+$sql = "UPDATE customer 
+        SET customer_name=?, address=?, contact=?
+		WHERE customer_id=?";
 $stmt = $conn->prepare($sql);
 
 // Bind parameters
@@ -20,8 +20,8 @@ $stmt->bind_param('sssi', $name, $address, $contact, $id);
 
 // Execute the query
 if ($stmt->execute()) {
-    // Redirect to patient.php if the update was successful
-    header("location: patient.php");
+    // Redirect to customer.php if the update was successful
+    header("location: customer.php");
 } else {
     // Handle the case where the update failed
     echo "Update failed: " . $conn->error;

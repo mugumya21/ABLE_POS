@@ -53,7 +53,6 @@
                         <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
                         <li><a href="sales.php"><i class="icon-shopping-cart icon-2x"></i> Sales</a></li>             
                         <li class="active"><a href="products.php"><i class="icon-list-alt icon-2x"></i> Products</a></li>
-                        <li><a href="#.php"><i class="icon-list-alt icon-2x"></i> Convert Qty Unit</a></li>
                         <li><a href="purchaseslist.php"><i class="icon-list-alt icon-2x"></i> Purchases</a></li>
                         <li><a href="customer.php"><i class="icon-group icon-2x"></i> Customers</a></li>
                         <li><a href="supplier.php"><i class="icon-group icon-2x"></i> Suppliers</a></li>
@@ -101,13 +100,11 @@
                     </div>
                 </div>
                 <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
-                <a rel="facebox" href="addproductcategory.php"><button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="icon-plus-sign icon-large"></i> Add Product Category</button></a><br><br>
                 <a rel="facebox" href="addproduct.php"><button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="icon-plus-sign icon-large"></i> Add Product</button></a><br><br>
                 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
                     <thead>
                         <tr>
-                            <th width="15%"> Product Name </th>
-                            <th width="10%"> Qty Unit</th>
+                            <th width="20%"> Product Name </th>
                             <th width="10%"> QTY </th>
                             <th width="10%"> Qty Sold </th>
                             <th width="10%"> Qty Left </th>
@@ -124,9 +121,9 @@
                             die("Connection failed: " . $conn->connect_error);
                         }
 
-                        // Query to retrieve product data with paging for every 20 records
+                        // Query to retrieve product data with paging for every 5 records
                         $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
-                        $recordsPerPage = 20;
+                        $recordsPerPage = 5;
                         $offset = ($currentPage - 1) * $recordsPerPage;
                         $sql = "SELECT * FROM products LIMIT $offset, $recordsPerPage";
                         $result = $conn->query($sql);
@@ -135,7 +132,6 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
                                 echo '<td>' . $row['product_name'] . '</td>';
-                                echo '<td>' . $row['qty_unit'] . '</td>';
                                 echo '<td>' . $row['qty'] . '</td>';
                                 echo '<td>' . $row['qty_sold'] . '</td>';
                                 echo '<td>' . ($row['qty'] - $row['qty_sold']) . '</td>';
@@ -186,16 +182,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-    // $(document).ready(function() {
-    //     // Check the qty_left for each product row and display alert if qty_left is 3 or less
-    //     $('#resultTable tbody tr').each(function() {
-    //         var qtyLeft = parseInt($(this).find('td:eq(1)').text()); // Assuming the column index for qty_left is 3
-    //         if (qtyLeft <=1) {
-    //             alert('Alert: Qty Left for product ' + $(this).find('td:eq(0)').text() + ' is ' + qtyLeft);
-    //         }
-    //     });
-    // });
-</script>
+    <script type="text/javascript">
+        // Your JavaScript code here
+    </script>
 </body>
 </html>

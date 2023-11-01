@@ -6,7 +6,7 @@ $b = $_POST['address'];
 $c = $_POST['contact'];
 
 // query
-$sql = "INSERT INTO patient (patient_name, address, contact) VALUES (?, ?, ?)";
+$sql = "INSERT INTO customer (customer_name, address, contact) VALUES (?, ?, ?)";
 $q = $conn->prepare($sql);
 
 if (!$q) {
@@ -14,7 +14,7 @@ if (!$q) {
 }
 
 if ($q->bind_param("sss", $a, $b, $c) && $q->execute()) {
-    header("location: patient.php");
+    header("location: customer.php");
 } else {
     die("Execute failed: " . $q->error);
 }
