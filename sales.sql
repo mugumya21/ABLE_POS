@@ -297,6 +297,14 @@ INSERT INTO installation_info_table (installation_timestamp) VALUES (CURRENT_TIM
 -- $sql = "SELECT installation_timestamp FROM installation_info_table WHERE id = 1"; in main/index.php
 
 
+<<<<<<< HEAD
+=======
+CREATE TABLE IF NOT EXISTS productcategory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_type VARCHAR(255) NOT NULL
+);
+
+>>>>>>> 6db173236628f469e90a02b59b00f3bf99d51461
 
 -- Table structure for table `products`
 --
@@ -334,6 +342,7 @@ CREATE TABLE   IF NOT EXISTS receipt_items (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
+<<<<<<< HEAD
 
 CREATE TABLE IF NOT EXISTS customersledger (
     customersledger_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -352,3 +361,5 @@ CREATE TABLE IF NOT EXISTS productcategory (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_type VARCHAR(255) NOT NULL
 );
+=======
+>>>>>>> 6db173236628f469e90a02b59b00f3bf99d51461
