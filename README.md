@@ -1,2 +1,2 @@
-# HospitalMangtSystem
-The hospital management system is developed in python with flask. The super admin over sees the doctors, receptionist, patient attended to by the doctors, lab technicians etc
+# Able POS Management System
+The management system is developed in php with bootstrap. The admin over sees the daily sales, receipts, expenses and the cash enters daily sales, expenses.. etc
